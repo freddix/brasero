@@ -1,11 +1,11 @@
 Summary:	Disc burning application for GNOME
 Name:		brasero
-Version:	3.6.1
+Version:	3.8.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	1bf94b5d75f4a003b3d139d50e620c7b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.8/%{name}-%{version}.tar.xz
+# Source0-md5:	0a380af9dc134084fb04f54f2a656e6f
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -86,7 +86,7 @@ sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
     -i -e 's/GNOME_MAINTAINER_MODE_DEFINES//g'	\
     -i -e 's/GNOME_COMMON_INIT//g'		\
     -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
-    -i -e 's/GNOME_DEBUG_CHECK//g' configure.in
+    -i -e 's/GNOME_DEBUG_CHECK//g' configure.ac
 
 %build
 %{__gtkdocize}
@@ -148,7 +148,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/brasero3
 %dir %{_libdir}/brasero3/plugins
 %attr(755,root,root) %{_libdir}/brasero3/plugins/*.so
-%{_datadir}/GConf/gsettings/brasero.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.brasero.gschema.xml
 %{_desktopdir}/brasero.desktop
 %{_iconsdir}/hicolor/*/*/*.png
