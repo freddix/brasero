@@ -1,11 +1,11 @@
 Summary:	Disc burning application for GNOME
 Name:		brasero
-Version:	3.8.0
-Release:	2
+Version:	3.11.4
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	0a380af9dc134084fb04f54f2a656e6f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.11/%{name}-%{version}.tar.xz
+# Source0-md5:	e324367013e18dcfb241e0214b87d7c1
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -82,7 +82,7 @@ Brasero integration for Nautilus.
 %setup -q
 
 # kill gnome common deps
-sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
+%{__sed} -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
     -i -e 's/GNOME_MAINTAINER_MODE_DEFINES//g'	\
     -i -e 's/GNOME_COMMON_INIT//g'		\
     -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
@@ -110,8 +110,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/brasero3/plugins/lib*.la
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/*.la
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/GConf
 
 %find_lang %{name} --with-gnome --with-omf
 
